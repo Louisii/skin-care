@@ -23,4 +23,3 @@ To get started with this project, you can clone the repository and install the d
 npm run dev
 `
 
-This will start the development server at http://localhost:3000.
