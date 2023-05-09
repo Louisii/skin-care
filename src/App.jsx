@@ -1,13 +1,14 @@
 import './App.css'
+import Start from './pages/Start'
 
 function App() {
 
-  const a= "b"
 
   return (
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
+    <>
+      <Start/>
+
+    </>
   )
 }
 
