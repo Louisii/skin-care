@@ -1,6 +1,8 @@
 import logo from '../assets/logo.png'
+import { Link } from "react-router-dom";
 
 const Start = () => {
+
     return (
         <>
             <div className="flex flex-col items-center">
@@ -14,9 +16,9 @@ const Start = () => {
                     Tenha uma pele radiante e jovem com apenas alguns cliques!
                 </p>
                 <div className='mt-10'>
-                    <button className="bg-gradient-to-r from-[#78995C] to-[#ADBD8E] p-4 rounded-md shadow-md font-semibold text-white hover:bg-gradient-to-r hover:from-[#68A534] hover:to-[#9BBC5B] transition-all duration-300">
-                        Crie sua Rotina de Skin Care Personalizada!
-                    </button>
+                    <Link to="/quiz" className="bg-gradient-to-r from-[#78995C] to-[#ADBD8E] p-4 rounded-md shadow-md font-semibold text-white hover:bg-gradient-to-r hover:from-[#68A534] hover:to-[#9BBC5B] transition-all duration-300">
+                    Crie sua Rotina de Skin Care Personalizada!
+                    </Link>
                 </div>
             </div>
 
