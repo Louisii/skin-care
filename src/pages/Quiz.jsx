@@ -3,6 +3,9 @@ import logo from '../assets/logo.png';
 
 const Quiz = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [selectedAnswers, setSelectedAnswers] = useState([]);
+  const [results, setResults] = useState([]);
+
   const questions = [
     "Qual é o seu tipo de pele?",
     "Qual é a sua preocupação principal em relação à pele?",
@@ -82,11 +85,22 @@ const Quiz = () => {
     ],
   ];
 
+  const handleAnswerSelection = (answer) => {
+    const updatedAnswers = [...selectedAnswers];
+    updatedAnswers[currentQuestion] = answer;
+    setSelectedAnswers(updatedAnswers);
+  };
+
   const handleNextQuestion = () => {
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
     }
+    console.log(selectedAnswers);
   };
+
+  const handleResults = (selectedAnswers) => {
+    
+  }
 
   return (
     <>
@@ -103,6 +117,7 @@ const Quiz = () => {
             <button
               key={index}
               className="bg-gradient-to-r from-[#78995C] to-[#ADBD8E] p-2 w-64 rounded-md shadow-md font-semibold text-white hover:bg-gradient-to-r hover:from-[#68A534] hover:to-[#9BBC5B] transition-all duration-300 mb-2"
+              onClick={() => handleAnswerSelection(alternative)}
             >
               {alternative}
             </button>
