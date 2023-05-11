@@ -4,7 +4,8 @@ import logo from '../assets/logo.png';
 const Quiz = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState([]);
-  const [results, setResults] = useState([]);
+  const [results, setResults] = useState('');
+  const [showResults, setShowResults] = useState(false);
 
   const questions = [
     "Qual é o seu tipo de pele?",
@@ -98,12 +99,17 @@ const Quiz = () => {
     console.log(selectedAnswers);
   };
 
-  const handleResults = (selectedAnswers) => {
-    
-  }
+  const handleResults = () => {
+    const mappedResults = selectedAnswers.map((answer, index) => {
+      return answers[index][answer];
+    });
+    setResults(mappedResults);
+    setShowResults(true)
+  };
 
   return (
     <>
+
       <div className="flex flex-col items-center">
         <div className="text-center">
           <img src={logo} className="p-6 w-60 sm:w-72" alt="Logo" />
@@ -117,7 +123,7 @@ const Quiz = () => {
             <button
               key={index}
               className="bg-gradient-to-r from-[#78995C] to-[#ADBD8E] p-2 w-64 rounded-md shadow-md font-semibold text-white hover:bg-gradient-to-r hover:from-[#68A534] hover:to-[#9BBC5B] transition-all duration-300 mb-2"
-              onClick={() => handleAnswerSelection(alternative)}
+              onClick={() => handleAnswerSelection(index)}
             >
               {alternative}
             </button>
@@ -131,6 +137,21 @@ const Quiz = () => {
         >
           Próximo
         </button>
+
+        
+      {selectedAnswers.length === questions.length && (
+        <button onClick={handleResults}>mostrar resultado</button>
+      )}
+
+      {showResults && (
+        <div className='text-justify bg-white m-4 p-2'>
+          {results.map((result, index) => (
+            <p key={index}>{result}</p>
+          ))}
+        </div>
+      )}
+
+
       </div>
     </>
   );
